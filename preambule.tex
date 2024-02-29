@@ -1,0 +1,114 @@
+%importation des packages
+\documentclass[fontsize=11pt,twoside=true,DIV=calc,parskip=half]{scrbook}
+\usepackage{scrlayer-scrpage} %équivalent de fancyhdr pour kommascript
+\usepackage[french]{babel}
+\usepackage[autostyle]{csquotes} % csquotes va utiliser la langue définie dans babel
+\usepackage[shortlabels]{enumitem} %permet de faire \begin{enumerate}[a)]
+\usepackage{tabularx}
+\usepackage{amsmath} %formules mathématiques
+\usepackage{amssymb} %symboles mathématiques
+\usepackage{amsfonts} %polices mathématiques
+\usepackage{anyfontsize}
+\usepackage{graphicx}
+\usepackage{wrapfig}%image à doite ou a gauche du texte
+
+\usepackage{multido}%pour la macro pointillés
+\usepackage[breakable]{tcolorbox}
+\tcbuselibrary{theorems}
+\tcbuselibrary{skins,listings}
+\usepackage{siunitx}
+\sisetup{locale = FR}
+
+\usepackage{pstricks}%pour dessiner les champs électriques
+\usepackage{pst-magneticfield}%pour dessiner les champs magnétiques
+\usepackage{pst-coil,pst-slpe,pstricks-add}
+
+%hyperliens
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=black
+}
+
+
+%police
+%\usepackage{libertine} la police libertine et T1 ne permettent pas d'afficher les smallcaps, ni les upper+bold.
+\usepackage[T1]{fontenc}
+
+
+%cadre
+\usepackage{framed}
+
+%graphique tikz
+\usepackage{tikz}
+\usepackage{tkz-base}
+\usepackage{tkz-fct}
+\usepackage{tkz-euclide}
+
+
+%chemin vers les images
+\graphicspath{ {./images/} }
+
+%exercices xsim
+\usepackage[clear-aux]{xsim}
+\DeclareExerciseTagging{difficulty}
+\xsimsetup{
+  path=xsim,
+  load-style = layouts ,
+  exercise/template = runin ,
+  solution/template = runin,
+  difficulty={*,**,***},
+}
+
+
+
+%math
+\everymath{\displaystyle} %pour que les équations soient bien présentées
+
+
+
+
+%mise en page générale
+\KOMAoptions{DIV=last}
+\usepackage{setspace}%pour regler l'interligne
+\onehalfspacing %interligne1.5
+\setlength{\parindent}{0pt} %pas de retrait en début de paragraphe
+\usepackage{caption}%mise en forme des légendes des figures
+\addtokomafont{caption}{\scriptsize \itshape}
+\addtokomafont{captionlabel}{\scriptsize \itshape}
+
+
+%pieds de page utiliser scrlayer-scrpage
+\setkomafont{pageheadfoot}{\small}
+\lohead{} \rohead{} \cohead{}
+\lofoot{Électromagnétisme - physique(2h) - 6GT}
+\rofoot{Page \thepage}
+\cofoot{}
+
+
+%style perso et macro
+\definecolor{NavyBlue}{HTML}{7279ff}
+\definecolor{mygray1}{HTML}{e7e7e7}%light
+\definecolor{mygray2}{HTML}{676767}%lightdark
+\definecolor{Green}{HTML}{1d8600}%poleS
+\definecolor{BrickRed}{HTML}{b30003}%poleN
+\definecolor{Weiss}{rgb}{1,0.98,0.98}%  255 250 250 %main droite
+\definecolor{Haut}{rgb}{1,0.894,0.769}% 255 228 196 %main droite
+\definecolor{Auge}{rgb}{0.54,0.27,0.074}% 139 69 19 %main droite
+\newcommand{\motcle}[1]{
+  \uppercase{\textbf{#1}}
+}
+
+\newcommand{\pointilles}[1]{
+  \begin{itemize}[label={}]
+    \multido{}{#1}{\item \dotfill}
+  \end{itemize}
+}
+
+\newenvironment{encadre}{\begin{center}\begin{minipage}[c]{0.8\linewidth}\begin{tcolorbox}[colframe=red!50!yellow,colback=red!5!white]}{\end{tcolorbox}\end{minipage}\end{center}}
+\newtcbtheorem[number within=section]{encadre_equation}{}{colback=green!5,colframe=green!35!black,fonttitle=\bfseries}{th}
+
+

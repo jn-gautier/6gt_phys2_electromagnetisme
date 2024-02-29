@@ -1,0 +1,160 @@
+\begin{tikzpicture}
+\tikzset{>=latex}
+\tkzInit[xmin=-5,xmax=5,ymin=-5,ymax=5]
+\tkzClip
+\begin{scope}[rotate=11]
+\tkzDefPoint(0,2){A}
+\tkzDefPoint(0,-2){B}
+\tkzDefPoint(0,0){O}
+\tkzDrawCircle[fill=mygray1](O,A)
+\tkzDefPointBy[rotation=center O angle -11](A)
+\tkzGetPoint{Ngeog}
+\tkzDefPointBy[rotation=center O angle -11](B)
+\tkzGetPoint{Sgeog}
+
+%1_droite
+\draw (.9,0) [ 
+color=NavyBlue,
+decoration={markings, mark=at position 0 with {\arrow{>}}},
+postaction={decorate}] 
+ellipse (.9  and .6);
+
+%1_gauche
+\draw (-.9,0)[
+color=NavyBlue,
+decoration={markings, mark=at position 0.5 with {\arrow{<}}},
+postaction={decorate}] 
+ ellipse (.9  and .6);
+
+%2_droite
+\draw (1.5,0) [
+color=NavyBlue,
+decoration={markings, mark=at position 0.125 with {\arrow{>}}},
+postaction={decorate}]
+ellipse (1.5  and 1);%rapport=0.67
+
+%2_gauche
+\draw (-1.5,0) [
+color=NavyBlue,
+decoration={markings, mark=at position 0.375 with {\arrow{<}}},
+postaction={decorate}]
+ ellipse (1.5  and 1);
+
+%3_droite
+\draw (2,0) [
+color=NavyBlue,
+decoration={markings, mark=at position 0.25 with {\arrow{>}}},
+postaction={decorate}]
+ ellipse (2  and 1.5);%rapport=0.75
+
+%3_gauche
+\draw (-2,0) [
+color=NavyBlue,
+decoration={markings, mark=at position 0.25 with {\arrow{<}}},
+postaction={decorate}]
+ ellipse (2  and 1.5);
+
+%4_droite
+\draw (2.5,0) [
+color=NavyBlue,
+decoration={markings, mark=at position 0.375 with {\arrow{>}}},
+postaction={decorate}]
+ellipse (2.5  and 2);%rapport=0.8
+
+ %4_gauche
+\draw (-2.5,0) [
+color=NavyBlue,
+decoration={markings, mark=at position 0.125 with {\arrow{<}}},
+postaction={decorate}]
+ ellipse (2.5  and 2);
+
+%5_droite
+\draw (3,0) [
+color=NavyBlue,
+decoration={markings, mark=at position 0.375 with {\arrow{>}}},
+postaction={decorate}]
+ ellipse (3  and 2.55);%rapport=0.85
+
+%5_gauche
+\draw (-3,0) [
+color=NavyBlue,
+decoration={markings, mark=at position 0.125 with {\arrow{<}}},
+postaction={decorate}]
+ ellipse (3  and 2.55);
+
+%6_droite
+\draw (3.5,0) [
+color=NavyBlue,
+decoration={markings, mark=at position 0.375 with {\arrow{>}}},
+postaction={decorate}]
+ ellipse (3.5  and 3.15);%rapport=0.9
+
+%6_gauche
+\draw (-3.5,0) [
+color=NavyBlue,
+decoration={markings, mark=at position 0.125 with {\arrow{<}}},
+postaction={decorate}]
+ ellipse (3.5  and 3.15);
+
+%7_droite
+\draw (4,0) [
+color=NavyBlue,
+decoration={markings, mark=at position 0.375 with {\arrow{>}}},
+postaction={decorate}]
+ellipse (4  and 3.8);%rapport=0.95
+
+%7_gauche
+\draw (-4,0) [
+color=NavyBlue,
+decoration={markings, mark=at position 0.125 with {\arrow{<}}},
+postaction={decorate}]
+ ellipse (4  and 3.8);
+
+%8_droite
+\draw (4.5,0) [
+color=NavyBlue,
+decoration={markings, mark=at position 0.375 with {\arrow{>}}},
+postaction={decorate}]
+ ellipse (4.5  and 4.5);%rapport=1
+
+%8_gauche
+\draw (-4.5,0) [
+color=NavyBlue,
+decoration={markings, mark=at position 0.125 with {\arrow{<}}},
+postaction={decorate}]
+ ellipse (4.5  and 4.5);
+
+\tkzDrawSegment[dashed,add=.1 and .1](A,B)
+\tkzDrawSegment[dashed,add=.3 and .3](Sgeog,Ngeog)
+\tkzLabelSegment[pos=1.2,right](Sgeog,Ngeog){\tiny Axe de rotation}
+
+
+
+%\tkzMarkAngle[mark=none,size=0.5](Ngeog,O,A)
+\tkzLabelAngle[pos=1.8](Ngeog,O,A){\tiny \(11^{\circ}\)}
+
+
+
+
+\tkzDrawPoints(A,B,Ngeog,Sgeog)
+\tkzLabelPoint[above left](A){\(S_{mag}\)}
+\tkzLabelPoint[right](B){\(N_{mag}\)}
+\tkzLabelPoint[right](Ngeog){\(N_{geog}\)}
+\tkzLabelPoint[left](Sgeog){\(S_{geog}\)}
+
+
+
+
+
+\draw [color=black,fill=Green,join=round] (-.1,0) rectangle (.1,0.5);
+\draw [color=black,fill=BrickRed,join=round] (-.1,0) rectangle (.1,-0.5);
+\draw (0,0.2) [color=black] node {\tiny S};
+\draw (0,-0.2) [color=black] node {\tiny N};
+
+\draw [color=black,fill=BrickRed,join=round] (2.9,0) -- (3,0.5) -- (3.1,0) -- cycle;
+\draw [color=black,fill=Green,join=round] (2.9,0) -- (3,-0.5)-- (3.1,0)--cycle;
+\draw (3,0.2) [color=black] node {\tiny N};
+\draw (3,-0.2) [color=black] node {\tiny S};
+
+\end{scope}
+\end{tikzpicture}
