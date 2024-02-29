@@ -1,5 +1,8 @@
 %importation des packages
+\RequirePackage{pdfmanagement-testphase}
+\DocumentMetadata {lang=fr}
 \documentclass[fontsize=11pt,twoside=true,DIV=calc,parskip=half]{scrbook}
+\usepackage{scrhack}
 \usepackage{scrlayer-scrpage} %équivalent de fancyhdr pour kommascript
 \usepackage[french]{babel}
 \usepackage[autostyle]{csquotes} % csquotes va utiliser la langue définie dans babel
@@ -11,6 +14,7 @@
 \usepackage{anyfontsize}
 \usepackage{graphicx}
 \usepackage{wrapfig}%image à doite ou a gauche du texte
+
 
 \usepackage{multido}%pour la macro pointillés
 \usepackage[breakable]{tcolorbox}
@@ -40,7 +44,7 @@
 
 
 %cadre
-\usepackage{framed}
+%\usepackage{framed}
 
 %graphique tikz
 \usepackage{tikz}
@@ -77,8 +81,8 @@
 \onehalfspacing %interligne1.5
 \setlength{\parindent}{0pt} %pas de retrait en début de paragraphe
 \usepackage{caption}%mise en forme des légendes des figures
-\addtokomafont{caption}{\scriptsize \itshape}
-\addtokomafont{captionlabel}{\scriptsize \itshape}
+\addtokomafont{caption}{\scriptsize \slshape}
+\addtokomafont{captionlabel}{\scriptsize \slshape}
 
 
 %pieds de page utiliser scrlayer-scrpage

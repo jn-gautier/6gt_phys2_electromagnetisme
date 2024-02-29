@@ -1,5 +1,5 @@
 \begin{tikzpicture}
-\usetikzlibrary{snakes}
+\usetikzlibrary{decorations.pathmorphing}
 \tikzset{>=latex}
 
 \begin{scope}[shift={(-1.25,0)}]
@@ -26,7 +26,7 @@
 
 \draw [color=black,join=round,fill=Green] (1.25,0.5) -- (.625,0.5) -- (1,0.625) -- (1.5,0.625) ;%face sup droite
 
-\draw [color=black,join=round,snake=zigzag,segment length=2pt,segment amplitude=1pt,fill=mygray2] (1.25,0) -- (1.25,0.5) -- (1.5,0.625) -- (1.5,0.125)--(1.25,0);%face droite
+\draw [decorate,decoration=zigzag]  [color=black,join=round,segment length=2pt,segment amplitude=1pt,fill=mygray2] (1.25,0) -- (1.25,0.5) -- (1.5,0.625) -- (1.5,0.125)--(1.25,0);%face droite
 \draw (0.2,0.25) [color=black] node {N};
 \draw (1.05,0.25) [color=black] node {S};
 \end{scope}
@@ -41,7 +41,7 @@
 
 \draw [color=black,join=round,fill=Green] (1.25,0) -- (1.25,0.5) -- (1.5,0.625) -- (1.5,0.125)--(1.25,0);%face droite
 
-\draw [color=black,join=round,snake=zigzag,segment length=2pt,segment amplitude=1pt] (0,0) -- (0,0.5) -- (.25,0.625);
+\draw [decorate,decoration=zigzag] [color=black,join=round,segment length=2pt,segment amplitude=1pt] (0,0) -- (0,0.5) -- (.25,0.625);
 
 \draw (0.2,0.25) [color=black] node {N};
 \draw (1.05,0.25) [color=black] node {S};
