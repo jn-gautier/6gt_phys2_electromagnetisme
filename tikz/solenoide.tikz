@@ -1,0 +1,83 @@
+
+\begin{luacode}
+  local sin, asin,cos,atan = math.sin, math.asin,math.cos,math.atan
+  local deg, rad = math.deg, math.rad
+  local sqrt=math.sqrt
+  function fct_list_d(n)
+
+  d=3.5*2*sin(rad(10))
+
+  list_d={}
+  for i=1,n do
+  list_d[i] = i*d
+  end
+  tex.print(table.concat(list_d,','))
+  end
+
+  function start_coord()
+  x=3.5*sin(rad(10))
+  y=3.5*cos(rad(10))
+  coord={x,y}
+  tex.print(table.concat(coord,','))
+  end
+
+  function end_coord(n)
+  d=n*2+1
+  x=d*3.5*sin(rad(10))--le d correspond au nombre de demi-spires
+  y=3.5*cos(rad(10))
+  coord={x,y}
+  tex.print(table.concat(coord,','))
+  end
+\end{luacode}
+
+\begin{tikzpicture}[]
+  \definecolor{front_spire_start}{HTML}{965729ff}
+  \definecolor{front_spire_middle}{HTML}{c59775ff}
+  \definecolor{back_spire_start}{HTML}{632f08ff}
+  \definecolor{back_spire_middle}{HTML}{a15f2eff}
+  \newcommand{\demispireback}
+  {
+    \shade[rotate around={-10:(.2,0)},top color=back_spire_start,bottom color=back_spire_start,middle color=back_spire_middle] (0,0) arc (180:360:.2)-- (.4,0) ..controls (.55,1.75).. (.4,3.5) arc(0:180:.2)--(0,3.5)..controls(0.15,1.75)..(0,0);
+  }
+
+  \newcommand{\demispirefront}
+  {\shade[rotate around={10:(.2,0)},top color=front_spire_start,bottom color=front_spire_start,middle color=front_spire_middle] (0,0) arc (180:360:.2)-- (.4,0) ..controls (.25,1.75).. (.4,3.5) arc(0:180:.2)--(0,3.5)..controls(-0.15,1.75)..(0,0);
+  }
+
+  \newcommand{\solenoidfront}[1]
+  { \outgoing{#1}
+    \foreach[expand list] \X in {\directlua{fct_list_d(#1)}}{
+        \begin{scope}[xshift=\X cm]
+          \demispirefront
+        \end{scope}}}
+
+  \newcommand{\solenoidback}[1]
+  { \incomming
+    \foreach[expand list] \X in {\directlua{fct_list_d(#1)}}{
+        \begin{scope}[xshift=\X cm]
+          \demispireback
+        \end{scope}}
+  }
+
+  \newcommand{\incomming}
+  {\shade[top color=back_spire_start,bottom color=back_spire_start,middle color=back_spire_middle]
+    (\directlua{start_coord()}) arc (180:0:.2) -- +(0,-5) arc (360:180:.2) -- +(0,5);}
+
+  \newcommand{\outgoing}[1]
+  {\shade[top color=front_spire_start,bottom color=front_spire_start,middle color=front_spire_middle] (\directlua{end_coord(#1)}) arc (180:0:.2) -- +(0,-5) arc (360:180:.2) -- +(0,5);}
+
+
+
+
+  \begin{scope}[yshift=2.5cm,xshift=2.05cm,scale=.2]
+    \solenoidback{10}
+  \end{scope}
+
+  \input{./tikz/lignes_champ.tikz}
+
+  \begin{scope}[yshift=2.5cm,xshift=2.05cm,scale=.2]
+    \solenoidfront{10}
+  \end{scope}
+
+
+\end{tikzpicture}
